@@ -1,32 +1,16 @@
 const express = require('express');
-const fs = require('fs');
 const app = express();
 
-app.get('/', (req, res) => {
-	fs.readFile('./history1.html', (err, data) => {
-		res.writeHead(200, {
-			'Content-Type': 'text/html'
-		});
-		res.end(data);
-	});
+app.get('/history1', (req, res) => {
+	res.sendFile(path.join(__dirname+'/history1.html'));
 });
 
 app.get('history2', (req, res) => {
-	fs.readFile('./history2.html', (err, data) => {
-		res.writeHead(200, {
-			'Content-Type': 'text/html'
-		});
-		res.end(data);
-	});
+	res.sendFile(path.join(__dirname+'/history2.html'));
 });
 
 app.get('history3', (req, res) => {
-	fs.readFile('./history3.html', (err, data) => {
-		res.writeHead(200, {
-			'Content-Type': 'text/html'
-		});
-		res.end(data);
-	});
+	res.sendFile(path.join(__dirname+'/history3.html'));
 });
 
 app.listen(3000, () => {
