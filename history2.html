@@ -12,5 +12,15 @@
 </head>
 <body>
   <div>History 2</div>
+  <a href="/history1">go to history 1</a>
+  <a href="/history3">go to history 3</a>
+  <script>
+    window.addEventListener('pageshow', function(e) {
+      console.log(e.persisted);
+      if (e.persisted) {
+        console.log('hi');
+      }
+    });
+  </script>
 </body>
 </html>

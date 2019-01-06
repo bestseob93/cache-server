@@ -2,6 +2,13 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+function nocache(req, res, next) {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+  next();
+}
+
 app.get('/', (req, res) => {
 	res.send('Hello World');
 });

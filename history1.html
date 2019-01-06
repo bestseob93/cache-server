@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
   <title>history 1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script
@@ -12,5 +14,25 @@
 </head>
 <body>
   <div>History 1</div>
+  <a href="/history2">go to history 2</a>
+  <div id="aa"></div>
+  <script>
+    var a = 'dddd';
+    document.getElementById('aa').innerHTML = a;
+    alert(a);
+    setTimeout(function() {
+      a = 'dccc';
+      alert(a);
+    }, 1000);
+    window.addEventListener('pageshow', function(e) {
+      console.log(e.persisted);
+      if (e.persisted) {
+        console.log('from back');
+        document.getElementById('aa').innerHTML = 'cccs';
+        window.location.reload();
+      }
+    });
+  </script>
+
 </body>
 </html>
