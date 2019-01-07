@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.get('/stage/:alias', (req, res) => {
 	let mock;
-	if (req.params.alias) {
+	if (req.params.alias !== 'hi') {
 		mock = {
 			name: 'hwanta',
 			years: '1993',
@@ -36,7 +36,7 @@ app.get('/stage/:alias', (req, res) => {
 
 app.get('/prod/:alias', nocache, (req, res) => {
 	let mock;
-	if (req.params.alias) {
+	if (req.params.alias !== 'hi') {
 		mock = {
 			name: 'hwanta',
 			years: '1993',
