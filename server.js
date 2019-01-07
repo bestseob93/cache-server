@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 	res.send('Hello World');
 });
 
-app.get('/stage', (req, res) => {
+app.get('/stage/:alias', (req, res) => {
 	let mock;
 	if (req.params.alias) {
 		mock = {
