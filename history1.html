@@ -18,13 +18,13 @@
   <div class="result"></div>
   <script>
     var alias = 'acs';
-    $(window).bind('pageshow', function (e) {
-      console.log(e.originalEvent.persisted);
-      if (e.originalEvent.persisted) {
-        console.log('reload ?');
-        window.location.reload();
-      }
-    });
+    // $(window).bind('pageshow', function (e) {
+    //   console.log(e.originalEvent.persisted);
+    //   if (e.originalEvent.persisted) {
+    //     console.log('reload ?');
+    //     window.location.reload();
+    //   }
+    // });
 
     $(window).on('load', function (e) {
       $.ajax({
