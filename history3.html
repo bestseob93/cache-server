@@ -17,6 +17,7 @@
   <a href="/history2">go to history 2</a>
   <div class="result"></div>
   <script>
+    var alias = 'acs';
     $(window).bind('pageshow', function (e) {
       console.log(e.originalEvent.persisted);
       if (e.originalEvent.persisted) {
