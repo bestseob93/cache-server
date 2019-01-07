@@ -15,22 +15,29 @@
 <body>
   <div>History 1</div>
   <a href="/history2">go to history 2</a>
-  <div id="aa"></div>
+  <div class="result"></div>
   <script>
-    var a = 'dddd';
-    document.getElementById('aa').innerHTML = a;
-    alert(a);
-    setTimeout(function() {
-      a = 'dccc';
-      alert(a);
-    }, 1000);
-    window.addEventListener('pageshow', function(e) {
-      console.log(e.persisted);
-      if (e.persisted) {
-        console.log('from back');
-        document.getElementById('aa').innerHTML = 'cccs';
+    $(window).bind('pageshow', function (e) {
+      console.log(e.originalEvent.persisted);
+      if (e.originalEvent.persisted) {
+        console.log('reload ?');
         window.location.reload();
       }
+    });
+
+    $(window).on('load', function (e) {
+      $.ajax({
+        method: 'get',
+        url: '/prod' + alias,
+        async: false,
+        success: function (result) {
+          console.log(result);
+          var resultEle = document.querySelector('.result');
+          resultEle.innerHTML = JSON.stringify(result.result);
+        },
+        error: function (err) {
+        }
+      });
     });
   </script>
 

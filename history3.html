@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>history 3</title>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <title>history 1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -12,5 +14,32 @@
 </head>
 <body>
   <div>History 3</div>
+  <a href="/history2">go to history 2</a>
+  <div class="result"></div>
+  <script>
+    $(window).bind('pageshow', function (e) {
+      console.log(e.originalEvent.persisted);
+      if (e.originalEvent.persisted) {
+        console.log('reload ?');
+        window.location.reload();
+      }
+    });
+
+    $(window).on('load', function (e) {
+      $.ajax({
+        method: 'get',
+        url: '/prod' + alias,
+        async: false,
+        success: function (result) {
+          console.log(result);
+          var resultEle = document.querySelector('.result');
+          resultEle.innerHTML = JSON.stringify(result.result);
+        },
+        error: function (err) {
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
