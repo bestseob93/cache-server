@@ -28,8 +28,10 @@
     // });
     var app = angular.module('app', []);
     app.controller('appCtrl', ['$http', function ($http) {
-      $http.get('/stage/' + alias, {
-        header: {'Cache-Control': 'no-cache'}
+      $http({
+        method: 'GET',
+        cache: false,
+        url: '/stage/' + alias,
       });
     }]);
   </script>
