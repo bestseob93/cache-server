@@ -30,8 +30,7 @@
     app.controller('appCtrl', ['$http', function ($http) {
       $http({
         method: 'GET',
-        cache: false,
-        url: '/stage/' + alias,
+        url: '/stage/' + alias + '?_=' + Date.now(),
       });
     }]);
   </script>
