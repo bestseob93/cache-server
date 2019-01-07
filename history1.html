@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.min.js"></script>
 </head>
-<body ng-app="app">
+<body ng-controller="appCtrl">
   <div>History 1</div>
   <a href="/history2">go to history 2</a>
   <div class="result"></div>
@@ -27,7 +27,7 @@
     //   }
     // });
     var app = angular.module('app', []);
-    app.controller(['$http'], function ($http) {
+    app.controller('appCtrl', ['$http'], function ($http) {
       $http.get('/stage/' + alias, {
         header: {'Cache-Control': 'no-cache'}
       });
